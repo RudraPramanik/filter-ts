@@ -7,10 +7,12 @@ import './styles.css';
 
 interface Props {
   selectedCategory: string;
-  selectCategory: (event: any, newValue: string) => void;
+  // selectCategory: (event: any, newValue: string) => void;
+  selectCategory: any;
   selectedRating: string;
   selectedPrice: number;
-  selectRating: (event: any, newValue: string) => void;
+  // selectRating: (event: any, newValue: string) => void;
+  selectRating: any;
   cuisines: {
     id: number;
     label: string;

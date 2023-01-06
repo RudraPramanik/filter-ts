@@ -1,22 +1,37 @@
 import React from 'react';
-import ListItem from './ListItem';
 import './styles.css';
 
 interface Item {
-  id: number;
-  // Other properties for the item object
+  coverSrc: string;
+  title: string;
+  price: number;
+  deliveryFee: number;
+  serviceTime: string;
+  rating: number;
 }
 
 interface Props {
-  list: Item[];
+  item: Item;
 }
 
-const List: React.FC<Props> = ({ list }) => (
-  <div className="list-wrap">
-    {list.map((item) => (
-      <ListItem key={item.id} item={item} />
-    ))}
+const ListItem: React.FC<Props> = ({
+  item: { coverSrc, title, price, deliveryFee, serviceTime, rating },
+}) => (
+  <div className="listItem-wrap">
+    <img src={coverSrc} alt="" />
+    <header>
+      <h4>{title}</h4>
+      <span>🌟{rating}</span>
+    </header>
+    <footer>
+      <p>
+        <b>{serviceTime}</b> <span> Delivery Fee ${deliveryFee}</span>
+      </p>
+      <p>
+        <b>${price}</b>
+      </p>
+    </footer>
   </div>
 );
 
-export default List;
+export default ListItem;

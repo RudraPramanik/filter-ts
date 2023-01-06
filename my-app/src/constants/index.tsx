@@ -1,4 +1,4 @@
-export const categoryList = [
+export const categoryList: any = [
   {
     id: 1,
     value: 'place',
@@ -39,7 +39,7 @@ export const ratingList = [
   },
 ];
 
-export const dataList = [
+export const dataList: any = [
   {
     id: 1,
     title: 'lounge resort',

@@ -8,7 +8,8 @@ interface Item {
 }
 
 interface Props {
-  list: Item[];
+  // list: Item[];
+  list: any[];
 }
 
 const List: React.FC<Props> = ({ list }) => (

@@ -7,15 +7,17 @@ import { dataList } from '../../constants';
 import './styles.css';
 
 const Home = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [selectedRating, setSelectedRating] = useState<string | null>(null);
-  const [selectedPrice, setSelectedPrice] = useState<[number, number]>([
-    1000, 5000,
-  ]);
+  // const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  // const [selectedRating, setSelectedRating] = useState<string | null>(null);
+  // const [selectedPrice, setSelectedPrice] = useState<[number, number]>([
+  //   1000, 5000,
+  // ]);
+  const [selectedCategory, setSelectedCategory] = useState<any>(null);
+  const [selectedRating, setSelectedRating] = useState<any>(null);
+  const [selectedPrice, setSelectedPrice] = useState<any>([1000, 5000]);
 
-  const [cuisines, setCuisines] = useState<
-    { id: number; checked: boolean; label: string }[]
-  >([
+  const [cuisines, setCuisines] = useState<any>([
+    // { id: number; checked: boolean; label: string }[]
     { id: 1, checked: false, label: 'American' },
     { id: 2, checked: false, label: 'Chinese' },
     { id: 3, checked: false, label: 'Italian' },
@@ -41,13 +43,17 @@ const Home = () => {
 
   const handleChangeChecked = (id: number) => {
     const cusinesStateList = cuisines;
-    const changeCheckedCuisines = cusinesStateList.map((item) =>
+    const changeCheckedCuisines = cusinesStateList.map((item: any) =>
       item.id === id ? { ...item, checked: !item.checked } : item
     );
     setCuisines(changeCheckedCuisines);
   };
 
-  const handleChangePrice = (event: Event, value: [number, number]) => {
+  // const handleChangePrice = (event: Event, value: [number, number]) => {
+  //   setSelectedPrice(value);
+  // };
+
+  const handleChangePrice = (value: any) => {
     setSelectedPrice(value);
   };
 
@@ -56,29 +62,29 @@ const Home = () => {
 
     if (selectedRating) {
       updatedList = updatedList.filter(
-        (item) => parseInt(item.rating) === parseInt(selectedRating)
+        (item: any) => parseInt(item.rating) === parseInt(selectedRating)
       );
     }
 
     if (selectedCategory) {
       updatedList = updatedList.filter(
-        (item) => item.category === selectedCategory
+        (item: any) => item.category === selectedCategory
       );
     }
 
     const cuisinesChecked = cuisines
-      .filter((item) => item.checked)
-      .map((item) => item.label.toLowerCase());
+      .filter((item: any) => item.checked)
+      .map((item: any) => item.label.toLowerCase());
 
     if (cuisinesChecked.length) {
-      updatedList = updatedList.filter((item) =>
+      updatedList = updatedList.filter((item: any) =>
         cuisinesChecked.includes(item.cuisine)
       );
     }
 
     if (searchInput) {
       updatedList = updatedList.filter(
-        (item) =>
+        (item: any) =>
           item.title.toLowerCase().search(searchInput.toLowerCase().trim()) !==
           -1
       );
@@ -88,7 +94,7 @@ const Home = () => {
     const maxPrice = selectedPrice[1];
 
     updatedList = updatedList.filter(
-      (item) => item.price >= minPrice && item.price <= maxPrice
+      (item: any) => item.price >= minPrice && item.price <= maxPrice
     );
 
     setList(updatedList);
